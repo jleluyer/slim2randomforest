@@ -23,9 +23,6 @@ library(foreach)
 library(purrr)
 library(utils)
 
-#header<-as.matrix(read.table("header_matrix.txt",header=F))
-#colnames(geno_res)<-header
-
 #upload genetic matrix
 matrix.geno<-read.table("03_matrices/matrix_genetic.__NB__.txt",header=TRUE)
 names.matrix<-read.table("03_matrices/loci.matrix.__NB__.txt",header=F)
