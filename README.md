@@ -1,6 +1,6 @@
 # slim2randomforest
 
-Slim2randomforest is a simple workflow for simulating .vcf datasets with SliM, controle for population structure with Admixture and search for polygenic selection with a random forest approach
+Slim2randomforest is a simple workflow for simulating .vcf datasets with SliM, control for population structure with Admixture and search for polygenic selection with a random forest approach
 
 ## WARNING
 
@@ -44,4 +44,7 @@ i3  Cond2
 First argument is the number of iterations
 
 ## R dependencies
+
+## Contributions
+Martin Laporte, PhD
 
