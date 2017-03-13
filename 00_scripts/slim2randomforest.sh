@@ -3,7 +3,7 @@
 NUMBER=__IDX__
 # launch slim file
   toEval="cat 00_scripts/script_slim_template.sh | sed 's/__NB__/$NUMBER/g'"
-   eval $toEval > SLIM_"$NUMBER".sh
+   eval $toEval >SLIM_"$NUMBER".sh
 
 # launch slim
 slim SLIM_"$NUMBER".sh
@@ -17,7 +17,7 @@ plink --vcf "$inputvcf".vcf --recode --out "$inputvcf".impute --double-id --allo
 plink --file "$inputvcf".impute --make-bed --out "$inputvcf".impute --allow-extra-chr --chr-set 55
 admixture "$inputvcf".impute.bed 2
 cd ..
-
+exit
 #prepare matrix
 cut -f 1 02_vcf/test.slim."$NUMBER".impute.2.Q >02_vcf/admixture."$NUMBER".txt
 paste 01_info_file/individuals.list.txt 02_vcf/admixture."$NUMBER".txt >03_matrices/matrix.admixture."$NUMBER".txt

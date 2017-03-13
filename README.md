@@ -22,6 +22,9 @@ Download [admixture](https://www.genetics.ucla.edu/software/admixture/download.h
 ```
 tar -xvf *.tar.gz
 ```
+## install Plink
+
+Download [plink](https://www.cog-genomics.org/plink2) source code
 
 ## SLim to Random Forest
 

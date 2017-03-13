@@ -15,7 +15,7 @@ cd $PBS_O_WORKDIR
 NUMBER=__IDX__
 # launch slim file
   toEval="cat 00_scripts/script_slim_template.sh | sed 's/__NB__/$NUMBER/g'"
-   eval $toEval > SLIM_"$NUMBER".sh
+   eval $toEval >SLIM_"$NUMBER".sh
 
 # launch slim
 slim SLIM_"$NUMBER".sh
@@ -42,7 +42,7 @@ grep 'CHR' 02_vcf/test.slim.1.vcf|cut -f 10- >03_matrices/header."$NUMBER".txt
 cat 03_matrices/header."$NUMBER".txt 03_matrices/TEMP.matrix."$NUMBER".txt >03_matrices/matrix_genetic."$NUMBER".txt
 
 rm 03_matrices/TEMP.matrix."$NUMBER".txt
-
+rm 03_matrices/header."$NUMBER".txt
 
 #launch RF
 toEval="cat 00_scripts/script_rf_template.R | sed 's/__NB__/$NUMBER/g'"
@@ -51,6 +51,6 @@ toEval="cat 00_scripts/script_rf_template.R | sed 's/__NB__/$NUMBER/g'"
 Rscript RANDFOR_"$NUMBER".R
 
 #clean up
-mv RANDFOR_"$NUMBER".R 99_log
-mv SLIM_"$NUMBER".sh 99_log
-mv TOTAL_"$NUMBER".sh 99_log
+#mv RANDFOR_"$NUMBER".R 99_log
+#mv SLIM_"$NUMBER".sh 99_log
+#mv TOTAL_"$NUMBER".sh 99_log
