@@ -27,9 +27,12 @@ i3  Cond2
 ```
 
 ### launch script
+
 ```
 00_scripts/launch_slim.sh 1
 ```
+
+First argument is the number of iterations
 
 ## R dependencies
 
