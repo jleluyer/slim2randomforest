@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#prepare indivduals list
+awk '{print $1}' 01_info_file/strata.txt|grep -v 'INDIV' >01_info_file/individuals.list.txt
+
+#launch loop
 for i in 1
 do
   toEval="cat 00_scripts/slim2randomforest.sh | sed 's/__IDX__/$i/g'"

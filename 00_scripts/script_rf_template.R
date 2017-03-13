@@ -58,7 +58,7 @@ treatment=as.factor(substr(strata[,2],4,6))
 
 ######## random forest wild vs hatchery STEP 1 #######################
 ######################################################################
-rf=randomForest(geno_res,treatment,importance=TRUE,ntree=100)
+rf=randomForest(geno_res,treatment,importance=TRUE,ntree=1000000)
 imp=importance(rf, type=1)
 
 #pdf("plotimp1.pdf")

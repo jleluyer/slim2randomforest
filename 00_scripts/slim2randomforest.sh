@@ -38,3 +38,7 @@ toEval="cat 00_scripts/script_rf_template.R | sed 's/__NB__/$NUMBER/g'"
 
 Rscript RANDFOR_"$NUMBER".R
 
+#clean up
+mv RANDFOR_"$NUMBER".R 99_log
+mv SLIM_"$NUMBER".sh 99_log
+mv TOTAL_"$NUMBER".sh 99_log

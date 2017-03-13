@@ -1,4 +1,6 @@
 *.vcf
 *.txt
 *.log
+*.sh
+*.R
 
