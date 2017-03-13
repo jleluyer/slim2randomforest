@@ -33,7 +33,7 @@ matrix.admixture<-read.table("03_matrices/matrix.admixture.__NB__.txt",header=F)
 admix=matrix.admixture[,2]
 
 #upload strata
-strata<-read.table("03_matrices/strata.txt",header=T)
+strata<-read.table("01_info_file/strata.txt",header=T)
 
 x=admix
 geno_res=NULL
