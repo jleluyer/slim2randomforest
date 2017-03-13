@@ -3,4 +3,5 @@
 *.log
 *.sh
 *.R
-
+*.err
+*.out
