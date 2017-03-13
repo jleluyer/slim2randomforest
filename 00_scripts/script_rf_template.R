@@ -35,16 +35,16 @@ library(cowplot)
 #colnames(geno_res)<-header
 
 #upload genetic matrix
-matrix.geno<-read.table("~/Desktop/matrix_genetic.__NB__.txt",header=TRUE)
-names.matrix<-read.table("~/Desktop/loci.matrix.__NB__.txt",header=F)
+matrix.geno<-read.table("03_matrices/matrix_genetic.__NB__.txt",header=TRUE)
+names.matrix<-read.table("03_matrices/loci.matrix.__NB__.txt",header=F)
 rownames(matrix.geno) = names.matrix [,1]
 
 #upload admixture
-matrix.admixture<-read.table("~/Desktop/matrix.admixture.__NB__.txt",header=F)
+matrix.admixture<-read.table("03_matrices/matrix.admixture.__NB__.txt",header=F)
 admix=matrix.admixture[,2]
 
 #upload strata
-strata<-read.table("~/Desktop/strata",header=T)
+strata<-read.table("03_matrices/strata",header=T)
 
 x=admix
 geno_res=NULL
@@ -104,7 +104,7 @@ imp3=importance(rf3, type=1)
 #par(mfrow=c(1,2))
 #plot(sort(imp3),ylab="Permuted importance",xlab="SNPs")
 #abline(h=25)
-save(rf3,file="~/Desktops/rf3.__NB__.Rda")
+save(rf3,file="04_results/rf3.__NB__.Rda")
 #dev.off()
 message("rf ok")
 #pdf("plotgrp3.pdf")
@@ -127,7 +127,7 @@ marker_impSNPinfo40=marker_impSNP[impSNPinfo40]
 data.info40<-cbind.data.frame(admixture[,1:2],geno_impSNPinfo40)
 markerstemp40<-t(data.info40)
 marker.names40<-rownames(markerstemp40)
-write.table(marker.names40,file="selected_markers40.__NB__.txt",quote=F)
+write.table(marker.names40,file="04_results/selected_markers40.__NB__.txt",quote=F)
 
 
 impSNPinfo25=which(imp3>=25)
@@ -136,5 +136,5 @@ marker_impSNPinfo25=marker_impSNP[impSNPinfo25]
 data.info25<-cbind.data.frame(admixture[,1:2],geno_impSNPinfo25)
 markerstemp25<-t(data.info25)
 marker.names25<-rownames(markerstemp25)
-write.table(marker.names25,file="selected_markers25.__NB__.txt",quote=F)
+write.table(marker.names25,file="04_results/selected_markers25.__NB__.txt",quote=F)
 

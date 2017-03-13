@@ -2,7 +2,7 @@
 
 for i in 1
 do
-  toEval="cat slim2randomforest.sh | sed 's/__IDX__/$i/g'"
+  toEval="cat 00_scripts/slim2randomforest.sh | sed 's/__IDX__/$i/g'"
     eval $toEval > TOTAL_"$i".sh
 done
 
