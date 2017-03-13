@@ -6,8 +6,8 @@ initialize() {
 	initializeMutationType("m1", 0.5, "f", 0.0);
 	// g1 genomic element type: uses m1 for all mutations
 	initializeGenomicElementType("g1", m1, 1.0);
-	// uniform chromosome of length 1000 kb with uniform recombination
-	initializeGenomicElement(g1, 0, 999999);
+	// uniform chromosome of length 10000 kb with uniform recombination
+	initializeGenomicElement(g1, 0, 9999999);
 	initializeRecombinationRate(1e-8);
 }
 
