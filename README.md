@@ -14,9 +14,16 @@ make
 
 Download [admixture](https://www.genetics.ucla.edu/software/admixture/download.html)
 
-## launch script
+## SLim to Random Forest
 
+### Change number of iterations
 
+### Prepare strata file
+
+### launch script
+```
+00_scripts/launch_slim.sh
+```
 
 ## R dependencies
 
