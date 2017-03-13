@@ -14,6 +14,10 @@ make
 
 Download [admixture](https://www.genetics.ucla.edu/software/admixture/download.html) source code
 
+```
+tar -xvf *.tar.gz
+```
+
 ## SLim to Random Forest
 
 ### Prepare strata file
