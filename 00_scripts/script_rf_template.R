@@ -22,8 +22,6 @@ library(parallel)
 library(foreach)
 library(purrr)
 library(utils)
-#install.packages("cowplot")
-library(cowplot)
 
 #header<-as.matrix(read.table("header_matrix.txt",header=F))
 #colnames(geno_res)<-header
