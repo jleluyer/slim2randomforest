@@ -1,14 +1,19 @@
 # slim2randomforest
 
 
-# install SLiM
+## install SLiM
 
-[SLiM](https://messerlab.org/slim/)
+Download [SLiM](https://messerlab.org/slim/) source code
+
+```
+unzip SLiM.zip
+cd SLiM
+make
+```
+
+## launch script
 
 
-# launch script
 
-
-
-# R dependencies
+## R dependencies
 
