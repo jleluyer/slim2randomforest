@@ -46,5 +46,5 @@ First argument is the number of iterations
 ## R dependencies
 
 ## Contributions
-Martin Laporte, PhD
+[Martin Laporte, PhD](http://martinlaporte.weebly.com/)
 
