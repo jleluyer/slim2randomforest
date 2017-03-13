@@ -62,7 +62,7 @@ rf$err.rate[1000000,]
 minIMP=0
 impSNP=which(imp>=minIMP)
 geno_impSNP=geno_res[,impSNP]
-marker=c(1:ncol(geno))
+marker=c(1:ncol(matrix.geno))
 marker_impSNP=marker[impSNP]
 
 ######## random forest wild vs hatchery STEP 2 #######################
@@ -77,7 +77,7 @@ imp2=importance(rf2, type=1)
 #pdf("plotgrp2.pdf")
 #plot(treatment,rf2$votes[,1])
 #dev.off()
-rf2$err.rate[100000,]
+rf2$err.rate[1000000,]
 
 #Obtenir seulement les SNP important (valeur depend du coude obtenue avec la figure
 impSNP2=which(imp2>=minIMP)
@@ -99,7 +99,7 @@ message("rf ok")
 #pdf("plotgrp3.pdf")
 #plot(treatment,rf3$votes[,1],ylab="Votes",xlab="Treatment")
 #dev.off()
-rf3$err.rate[100000,]
+rf3$err.rate[1000000,]
 
 #Obtenir seulement les SNP important (valeur depend du coude obtenue avec la figure
 impSNP3=which(imp3>=minIMP)
@@ -113,7 +113,7 @@ str(geno_impSNP)
 impSNPinfo40=which(imp3>=40)
 geno_impSNPinfo40=geno_impSNP[,impSNPinfo40]
 marker_impSNPinfo40=marker_impSNP[impSNPinfo40]
-data.info40<-cbind.data.frame(admixture[,1:2],geno_impSNPinfo40)
+data.info40<-cbind.data.frame(matrix.admixture[,1:2],geno_impSNPinfo40)
 markerstemp40<-t(data.info40)
 marker.names40<-rownames(markerstemp40)
 write.table(marker.names40,file="04_results/selected_markers40.__NB__.txt",quote=F)
@@ -122,7 +122,7 @@ write.table(marker.names40,file="04_results/selected_markers40.__NB__.txt",quote
 impSNPinfo25=which(imp3>=25)
 geno_impSNPinfo25=geno_impSNP[,impSNPinfo25]
 marker_impSNPinfo25=marker_impSNP[impSNPinfo25]
-data.info25<-cbind.data.frame(admixture[,1:2],geno_impSNPinfo25)
+data.info25<-cbind.data.frame(matrix.admixture[,1:2],geno_impSNPinfo25)
 markerstemp25<-t(data.info25)
 marker.names25<-rownames(markerstemp25)
 write.table(marker.names25,file="04_results/selected_markers25.__NB__.txt",quote=F)
