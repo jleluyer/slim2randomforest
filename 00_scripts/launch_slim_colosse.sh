@@ -6,7 +6,7 @@ ITERATION=$1
 awk '{print $1}' 01_info_file/strata.txt|grep -v 'INDIV' >01_info_file/individuals.list.txt
 
 #launch loop
-for i in $ITERATION
+for i in $(eval echo "{1..$ITERATION}")
 do
   toEval="cat 00_scripts/slim2randomforest_colosse.sh | sed 's/__IDX__/$i/g'"
     eval $toEval >TOTAL_"$i".sh

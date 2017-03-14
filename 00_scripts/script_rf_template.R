@@ -126,4 +126,5 @@ data.info25<-cbind.data.frame(matrix.admixture[,1:2],geno_impSNPinfo25)
 markerstemp25<-t(data.info25)
 marker.names25<-rownames(markerstemp25)
 write.table(marker.names25,file="04_results/selected_markers25.__NB__.txt",quote=F)
-
+err.rate.df<-rf3$err.rate[1000000,]
+write.table(err.rate.df,file="04_results/selected_marker25.err.rate.__NB__.txt",quote=F)
