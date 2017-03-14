@@ -24,7 +24,7 @@ library(purrr)
 library(utils)
 
 #upload genetic matrix
-matrix.geno<-read.table("03_matrices/matrix_genetic.__NB__.txt",header=TRUE)
+matrix.geno<-read.table("03_matrices/matrix.genetic.__NB__.txt",header=TRUE)
 names.matrix<-read.table("03_matrices/loci.matrix.__NB__.txt",header=F)
 rownames(matrix.geno) = names.matrix [,1]
 
