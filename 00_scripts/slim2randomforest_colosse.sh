@@ -3,7 +3,7 @@
 #PBS -N slim2rf.__IDX__
 #PBS -o slim2rf.__IDX__.out
 #PBS -e slim2rf.__IDX__.err
-#PBS -l walltime=00:30:00
+#PBS -l walltime=24:00:00
 #PBS -M YOUREMAIL
 ####PBS -m ea
 #PBS -l nodes=1:ppn=8
@@ -67,7 +67,7 @@ cd ..
 ##################################################################################################
 
 #prepare matrix
-cut -f 1 02_vcf/dataset_noLD."$NUMBER".recode.impute.2.Q >02_vcf/admixture."$NUMBER".txt
+cut -f 1 02_vcf/dataset."$NUMBER".recode.impute.2.Q >02_vcf/admixture."$NUMBER".txt
 paste 01_info_file/individuals.list.txt 02_vcf/admixture."$NUMBER".txt >03_matrices/matrix.admixture."$NUMBER".txt
 
 #prepare genetic matrix
