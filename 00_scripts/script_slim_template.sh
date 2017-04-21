@@ -25,11 +25,6 @@ p2.setMigrationRates(p1, 0.01);
 
 // extract 20 samples by pop and output vcf file
 
-3000 late() {allIndividuals = sim.subpopulations.individuals;
-pop1=sample(p1.individuals,20,F);
-pop2=sample(p2.individuals,20,F);
-combined=c(pop1,pop2);combined.genomes.outputVCF(filePath="02_vcf/test.slim.3000g.__NB__.vcf",outputMultiallelics=F);}
-
 5000 late() {
 allIndividuals = sim.subpopulations.individuals;
 pop1=sample(p1.individuals,20,F);
@@ -38,8 +33,3 @@ combined=c(pop1,pop2);
 combined.genomes.outputVCF(filePath="02_vcf/test.slim.5000g.__NB__.vcf",outputMultiallelics=F);
 }
 
-
-7000 late() {allIndividuals = sim.subpopulations.individuals;
-pop1=sample(p1.individuals,20,F);
-pop2=sample(p2.individuals,20,F);
-combined=c(pop1,pop2);combined.genomes.outputVCF(filePath="02_vcf/test.slim.7000g.__NB__.vcf",outputMultiallelics=F);}
