@@ -20,8 +20,8 @@ NUMBER=__IDX__
 
 
 # launch slim file
-  toEval="cat 00_scripts/script_slim_template.sh | sed 's/__NB__/$NUMBER/g'"
-   eval $toEval >SLIM_"$NUMBER".sh
+ toEval="cat 00_scripts/script_slim_template.sh | sed 's/__NB__/$NUMBER/g'"
+  eval $toEval >SLIM_"$NUMBER".sh
 
 # launch slim
 slim SLIM_"$NUMBER".sh
@@ -36,10 +36,10 @@ slim SLIM_"$NUMBER".sh
 vcftools --vcf 02_vcf/test.slim."$NUMBER".vcf --maf 0.05 --remove-filtered-all --recode --max-missing 0.8 --min-alleles 2 --max-alleles 2 --hwe 0.05 --out 02_vcf/dataset."$NUMBER"
 
 # remove LD #NOT IMPLEMENTED
-#vcftools --vcf 02_vcf/dataset."$NUMBER".recode.vcf --geno-r2 --min-r2 0.8 --out 02_vcf/LD.sup0.8."$NUMBER"
+vcftools --vcf 02_vcf/dataset."$NUMBER".recode.vcf --geno-r2 --min-r2 0.8 --out 02_vcf/LD.sup0.8."$NUMBER"
 
-#awk '{print $1,$2}' 02_vcf/LD.sup0.8."$NUMBER".geno.ld|grep -v 'CHR'|sort -u >02_vcf/list_to_remove."$NUMBER".txt
-#vcftools --vcf 02_vcf/dataset.temp."$NUMBER".recode.vcf --exclude list_to_remove."$NUMBER".txt --recode --out 02_vcf/dataset_noLD."$NUMBER"
+awk '{print $1,$2}' 02_vcf/LD.sup0.8."$NUMBER".geno.ld|grep -v 'CHR'|sort -u >02_vcf/list_to_remove."$NUMBER".txt
+vcftools --vcf 02_vcf/dataset."$NUMBER".recode.vcf --exclude 02_vcf/list_to_remove."$NUMBER".txt --recode --out 02_vcf/dataset_noLD."$NUMBER"
 
 #clean up
 #rm 02_vcf/LD.sup0.8."$NUMBER".geno.ld
@@ -55,7 +55,7 @@ rm 02_vcf/test.slim."$NUMBER".vcf
 # launch admixture
 cd 02_vcf
 
-inputvcf="$(echo dataset."$NUMBER".recode.vcf|sed 's/.vcf//g')"
+inputvcf="$(echo dataset_noLD."$NUMBER".recode.vcf|sed 's/.vcf//g')"
 
 plink --vcf "$inputvcf".vcf --recode --out "$inputvcf".impute --double-id --allow-extra-chr --chr-set 55
 plink --file "$inputvcf".impute --make-bed --out "$inputvcf".impute --allow-extra-chr --chr-set 55
@@ -67,14 +67,14 @@ cd ..
 ##################################################################################################
 
 #prepare matrix
-cut -f 1 02_vcf/dataset."$NUMBER".recode.impute.2.Q >02_vcf/admixture."$NUMBER".txt
+cut -f 1 02_vcf/dataset_noLD."$NUMBER".recode.impute.2.Q >02_vcf/admixture."$NUMBER".txt
 paste 01_info_file/individuals.list.txt 02_vcf/admixture."$NUMBER".txt >03_matrices/matrix.admixture."$NUMBER".txt
 
 #prepare genetic matrix
-grep -v '#' 02_vcf/dataset."$NUMBER".recode.vcf|cut -f -2,10-|sed -e 's/0|0/0/g' -e 's/1|0/1/g' -e 's/0|1/1/g' -e 's/1|1/2/g'|awk '{print $1"_"$2,$0}'|cut -f 1 >03_matrices/loci.matrix."$NUMBER".txt
-grep -v '#' 02_vcf/dataset."$NUMBER".recode.vcf|cut -f -2,10-|sed -e 's/0|0/0/g' -e 's/1|0/1/g' -e 's/0|1/1/g' -e 's/1|1/2/g'|awk '{print $1"_"$2,$0}'|cut -f 3- >03_matrices/TEMP.matrix."$NUMBER".txt
+grep -v '#' 02_vcf/dataset_noLD."$NUMBER".recode.vcf|cut -f -2,10-|sed -e 's/0|0/0/g' -e 's/1|0/1/g' -e 's/0|1/1/g' -e 's/1|1/2/g'|awk '{print $1"_"$2,$0}'|cut -f 1 >03_matrices/loci.matrix."$NUMBER".txt
+grep -v '#' 02_vcf/dataset_noLD."$NUMBER".recode.vcf|cut -f -2,10-|sed -e 's/0|0/0/g' -e 's/1|0/1/g' -e 's/0|1/1/g' -e 's/1|1/2/g'|awk '{print $1"_"$2,$0}'|cut -f 3- >03_matrices/TEMP.matrix."$NUMBER".txt
 
-grep 'CHR' 02_vcf/dataset."$NUMBER".recode.vcf|cut -f 10- >03_matrices/header."$NUMBER".txt
+grep 'CHR' 02_vcf/dataset_noLD."$NUMBER".recode.vcf|cut -f 10- >03_matrices/header."$NUMBER".txt
 cat 03_matrices/header."$NUMBER".txt 03_matrices/TEMP.matrix."$NUMBER".txt >03_matrices/matrix.genetic."$NUMBER".txt
 
 rm 03_matrices/TEMP.matrix."$NUMBER".txt

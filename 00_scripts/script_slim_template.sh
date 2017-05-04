@@ -8,7 +8,7 @@ initialize() {
 	initializeGenomicElementType("g1", m1, 1.0);
 	// uniform chromosome of length 10000 kb with uniform recombination
 	initializeGenomicElement(g1, 0, 9999999);
-	initializeRecombinationRate(1e-8);
+	initializeRecombinationRate(1e-5);
 }
 
 // create a population of 500 individuals
