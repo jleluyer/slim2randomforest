@@ -8,7 +8,7 @@ initialize() {
 	initializeGenomicElementType("g1", m1, 1.0);
 	// uniform chromosome of length 10000 kb with uniform recombination
 	initializeGenomicElement(g1, 0, 9999999);
-	initializeRecombinationRate(1e-5);
+	initializeRecombinationRate(1e-6);
 }
 
 // create a population of 500 individuals
@@ -19,13 +19,13 @@ initialize() {
 
 // add migration rate
 1 {
-p1.setMigrationRates(p2, 0.01);
-p2.setMigrationRates(p1, 0.01);
+p1.setMigrationRates(p2, 0.0025);
+p2.setMigrationRates(p1, 0.0025);
 }
 
 // extract 20 samples by pop and output vcf file
 
-3000 late() {
+2000 late() {
 allIndividuals = sim.subpopulations.individuals;
 pop1=sample(p1.individuals,20,F);
 pop2=sample(p2.individuals,20,F);
